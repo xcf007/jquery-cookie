@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>jquery.cookie插件演示</title>
+        <meta charset="UTF-8" />
+        <style type="text/css">
+            *{margin:0;padding:0;}
+            body{padding:20px;font-family: "微软雅黑","Arial";}
+            table{border-spacing: 0;border-collapse: collapse;}
+            h1{font: bold 24px/35px "微软雅黑";font-size: 24px;color:#222;margin:20px 0;}
+            h2{font-size: 14px;color:#C00;margin:10px 0;}
+            .tbl-style{min-width:500px;margin-bottom: 20px;}
+            .tbl-style th,
+            .tbl-style td{
+                border:1px solid #DDD;
+                padding:2px 5px;
+            }
+            .tbl-style th{background-color: #EEE;font-size:14px;min-width:150px;width:150px;}
+            code{
+                font-family: "Arial";
+                color: #666;
+                padding: 5px;
+                border-color: #777;
+                display: block;
+                border-width: 1px 1px 1px 5px;
+                border-style: solid;
+                max-width: 500px;
+                margin: 10px 0;                
+            }
+            input[type=button]{
+                color: #fff;
+                text-shadow: 0 -1px 0 rgba(0,0,0,0.25);
+                background-color: #60b044;
+                background-image: -webkit-linear-gradient(#8add6d, #60b044);
+                background-image: linear-gradient(#8add6d, #60b044);
+                background-repeat: repeat-x; 
+                height: 24px;
+                border: none;
+                min-width: 100px;
+                border-radius: 3px;   
+                padding:0 10px;
+            }
+            .valuePlaceHolder{
+                display: inline-block;
+                min-width: 100px;
+                text-align: center;
+            }
+            .textbox{
+                height: 22px;
+                margin: 0 5px;
+                border: 1px dotted #369;            
+            }
+        </style>
+        <script type="text/javascript" src="jquery-1.4.2.min.js"></script>
+        <script type="text/javascript" src="jquery.cookie.js"></script>
+        <script type="text/javascript">
+            $(document).ready(function(){
+
+                //获取document.cookie
+                $('#sec01 input[type=button]').click(function(){
+                    $('#sec01 .valuePlaceHolder').text(document.cookie);
+                }).click();
+                
+                //设置Cookie
+                $('#sec02 input[type=button]').click(function(){
+                    $.cookie('set','myCookie',{value:$(this).prev().val()});
+                });
+
+                //获取Cookie
+                $('#sec03 input[type=button]').click(function(){
+                   $(this).prev().text($.cookie('get','myCookie'));
+                });   
+                
+                //删除Cookie
+                $('#sec04 input[type=button]').click(function(){
+                    $.cookie('delete','myCookie');
+                    $(this).prev().html('<s class="status">已删除</s>');
+                });                    
+            });
+        </script>
+    </head>
+    <body>
+        <h1>jQuery Cookie插件使用</h1>
+        <div id="sec01">
+            <h2>显示document.cookie</h2>
+            <table class="tbl-style">
+                <tr>
+                    <th>document.cookie:</th>
+                    <td><span class='valuePlaceHolder'>-</span><input type="button" value="读取document.cookie" /></td>
+                </tr>
+            </table>
+        </div>
+        <div id="sec02">
+            <h2>设置Cookie</h2>
+            <code>$.cookie('set','myCookie',{value:$(this).prev().val()});</code>
+            <table class="tbl-style">
+                <tr>
+                    <th>myCookie=</th>
+                    <td><input type="text" class="textbox" /><input type="button" value="设置Cookie" /></td>
+                </tr>
+            </table>
+        </div>
+        <div id="sec03">
+            <h2>读取Cookie</h2>
+            <code>$.cookie('get','myCookie')</code>            
+            <table class="tbl-style">
+                <tr>
+                    <th>myCookie:</th>
+                    <td><span class='valuePlaceHolder'>-</span><input type="button" value="读取Cookie" /></td>
+                </tr>
+            </table>
+        </div>    
+        <div id="sec04">
+            <h2>删除Cookie</h2>
+            <code>$.cookie('delete','myCookie')</code>            
+            <table class="tbl-style">
+                <tr>
+                    <th>删除myCookie:</th>
+                    <td><span class='valuePlaceHolder'>-</span><input type="button" value="删除Cookie" /></td>
+                </tr>
+            </table>
+        </div>          
+    </body>
+</html>
