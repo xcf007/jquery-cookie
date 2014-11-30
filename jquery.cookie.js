@@ -1,3 +1,9 @@
+/*
+ * jQuery Cookie Plugin 0.1
+ *
+ * Copyright 2014, Simon.Xi#huaat.net
+ *
+ */
 (function ($) {
     var defaults = {
         expires: 0,
